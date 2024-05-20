@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registered Users</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <nav>
+        <li><a href="/register">Register User</a></li>
+    </nav>
+    <h1>Registered Users</h1>
+    <table>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Membership Length</th>
+            <th>Price</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.first_name }}</td>
+            <td>{{ user.last_name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.membership_length }}
+                {% if user.membership_length > 1 %}
+                    Years
+                {% else %}
+                    Year
+                {% endif %}
+            </td>            
+            <td>{{ user.price }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
